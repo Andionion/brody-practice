@@ -4,17 +4,18 @@ import java.util.Arrays;
 
 /**
  * 34. 在排序数组中查找元素的第一个和最后一个位置
+ * <p>
  * 给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。
  * <p>
- * 你的算法时间复杂度必须是 O(log n) 级别。
+ * 你的算法时间复杂度必须是O(log n) 级别。
  * <p>
- * 如果数组中不存在目标值，返回 [-1, -1]。
+ * 如果数组中不存在目标值，返回[-1, -1]。
  * <p>
  * 示例 1:
  * <p>
  * 输入: nums = [5,7,7,8,8,10], target = 8
  * 输出: [3,4]
- * 示例 2:
+ * 示例2:
  * <p>
  * 输入: nums = [5,7,7,8,8,10], target = 6
  * 输出: [-1,-1]
@@ -25,47 +26,46 @@ import java.util.Arrays;
  *
  * @author CYF
  */
-public class $0034_FindFirstAndLastPositionOfElementInSortedArray {
-    public static int[] searchRange(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return new int[]{-1, -1};
-        }
+public class FindFirstAndLastPositionOfElementInSortedArray {
 
-        //因为是排序过的nums，所以先找到target位置，然后向后遍历，找到最后一个位置
-        int length = nums.length;
+    public static void main(String[] args) {
+        FindFirstAndLastPositionOfElementInSortedArray function = new FindFirstAndLastPositionOfElementInSortedArray();
+        int[] nums = {5, 7, 7, 8, 8, 10};
+        int target = 8;
+        System.out.println(Arrays.toString(function.searchRange(nums, target)));
+    }
+
+
+    public int[] searchRange(int[] nums, int target) {
         int firstIndex = -1;
         int lastIndex = -1;
+        if (null == nums || nums.length == 0) {
+            return new int[]{firstIndex, lastIndex};
+        }
+        // 找到那个和给定值相等的数字，然后下标开始向左向右移动到最后一个相等目标值的下标处
         int left = 0;
-        int right = length - 1;
+        int right = nums.length - 1;
         int mid;
         while (left <= right) {
             mid = (left + right) / 2;
             if (nums[mid] == target) {
-                int temp = mid;
                 firstIndex = mid;
                 lastIndex = mid;
-                //向左向右遍历，找到下标，要在[left,right]范围内遍历
-                while (mid > left && nums[mid] == nums[mid - 1]) {
-                    mid--;
-                    firstIndex = mid;
+                while (firstIndex > left && nums[firstIndex] == nums[firstIndex - 1]) {
+                    firstIndex--;
                 }
-                while (temp < right && nums[temp] == nums[temp + 1]) {
-                    temp++;
-                    lastIndex = temp;
+                while (lastIndex < right && nums[lastIndex] == nums[lastIndex + 1]) {
+                    lastIndex++;
                 }
                 break;
             } else if (nums[mid] < target) {
                 left = mid + 1;
-            } else if (nums[mid] > target) {
+            } else {
                 right = mid - 1;
             }
         }
         return new int[]{firstIndex, lastIndex};
     }
 
-    public static void main(String[] args) {
-        int[] nums = {1};
-        int target = 1;
-        System.out.println(Arrays.toString(searchRange(nums, target)));
-    }
+
 }
