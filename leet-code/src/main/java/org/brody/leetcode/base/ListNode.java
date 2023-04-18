@@ -20,14 +20,14 @@ public class ListNode {
         this.val = val;
     }
 
-    public ListNode(int[] vals) {
-        if (vals == null || vals.length == 0) {
+    public ListNode(int[] values) {
+        if (values == null || values.length == 0) {
             return;
         }
-        val = vals[0];
+        val = values[0];
         ListNode cur = this;
-        for (int i = 1, valsLength = vals.length; i < valsLength; i++) {
-            int val = vals[i];
+        for (int i = 1, length = values.length; i < length; i++) {
+            int val = values[i];
             cur.next = new ListNode(val);
             cur = cur.next;
         }

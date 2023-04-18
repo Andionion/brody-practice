@@ -18,7 +18,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lombok.version>1.18.24</lombok.version>
-        <hutool.version>5.8.3</hutool.version>
+        <hutool.version>5.8.11</hutool.version>
         <junit.version>4.13.2</junit.version>
         <fastjson.version>2.0.10</fastjson.version>
     </properties>
