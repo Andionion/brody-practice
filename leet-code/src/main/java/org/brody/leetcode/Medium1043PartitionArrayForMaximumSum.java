@@ -1,7 +1,5 @@
 package org.brody.leetcode;
 
-import java.util.Arrays;
-
 /**
  * <a href="https://leetcode.cn/problems/partition-array-for-maximum-sum/description/">1043. 分隔数组以得到最大和</a>
  * <p>
@@ -43,9 +41,36 @@ public class Medium1043PartitionArrayForMaximumSum {
 
     public static void main(String[] args) {
         Medium1043PartitionArrayForMaximumSum solution = new Medium1043PartitionArrayForMaximumSum();
+        int k = 4;
+        int[] arr = {1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3};
+        System.out.println(solution.maxSumAfterPartitioning(arr, k));
     }
 
+    /**
+     * 动态规划分割每一个子数组，d[i] = max{d[j] + maxValue * (i - j)}
+     * <p>
+     * 其中:
+     * <p>
+     * j的范围为[i-k,i-1]
+     * <p>
+     * maxValue=max{arr[j+1] ... arr[i]}
+     *
+     * @param arr
+     * @param k
+     * @return
+     */
     public int maxSumAfterPartitioning(int[] arr, int k) {
-
+        int[] d = new int[arr.length + 1];
+        for (int i = 1; i <= arr.length; i++) {
+            // 先将前一个数字设置为最大值
+            int maxValue = arr[i - 1];
+            for (int j = i - 1; j >= 0 && j >= i - k; j--) {
+                d[i] = Math.max(d[i], d[j] + maxValue * (i - j));
+                if (j > 0) {
+                    maxValue = Math.max(maxValue, arr[j - 1]);
+                }
+            }
+        }
+        return d[arr.length];
     }
 }
