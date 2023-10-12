@@ -3,9 +3,8 @@ package org.brody.leetcode;
 import java.util.Arrays;
 
 /**
- * 31. 下一个排列
  * <p>
- * "https://leetcode-cn.com/problems/next-permutation/"
+ * <a href="https://leetcode-cn.com/problems/next-permutation/">31. 下一个排列</a>
  * <p>
  * 实现获取下一个排列的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。
  * <p>
