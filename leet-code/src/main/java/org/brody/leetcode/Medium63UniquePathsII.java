@@ -48,10 +48,10 @@ package org.brody.leetcode;
  *
  * @author CYF
  */
-public class Easy63UniquePathsII {
+public class Medium63UniquePathsII {
 
     public static void main(String[] args) {
-        Easy63UniquePathsII solution = new Easy63UniquePathsII();
+        Medium63UniquePathsII solution = new Medium63UniquePathsII();
 
     }
 
